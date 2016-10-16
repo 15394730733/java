@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="org.test.mapper.UserinfoMapper">
+
+    <!-- resultMap标签:映射实体与表
+             type属性：表示实体全路径名
+             id属性：为实体与表的映射取一个任意的唯一的名字
+        -->
+    <resultMap type="org.test.entity.Userinfo" id="Userinfo">
+        <!-- id标签:映射主键属性
+             result标签：映射非主键属性
+             property属性:实体的属性名
+             column属性：表的字段名
+        -->
+        <id property="ID" column="ID"/>
+        <result property="create_at" column="create_at"/>
+        <result property="update_at" column="update_at"/>
+    </resultMap>
+
+    <!--
+            insert标签：要书写insert这么一个sql语句
+            id属性：为insert这么一个sql语句取一个任意唯一的名字
+            parameterType:要执行的dao中的方法的参数，如果是类的话，必须使用全路径类
+        -->
+
+    <insert id="insert" parameterType="org.test.entity.Userinfo" useGeneratedKeys="true" keyProperty="ID">
+        insert into it_userinfo(create_at,update_at,sex,age,qqNumber,schoolName,name,signature,imageUrl,account,password) 
+        values(
+        #{create_at,jdbcType=DATE},
+        #{update_at,jdbcType=DATE},
+        #{sex,jdbcType=INTEGER},
+        #{age,jdbcType=INTEGER},
+        #{qqNumber,jdbcType=INTEGER},
+        #{schoolName,jdbcType=CHAR},
+        #{name,jdbcType=CHAR},
+        #{signature,jdbcType=CHAR},
+        #{imageUrl,jdbcType=CHAR},
+        #{account,jdbcType=CHAR},
+        #{password,jdbcType=CHAR})
+    </insert>
+    <delete id="delete" parameterType="int">
+       delete from it_userinfo where ID = #{ID}
+    </delete>
+    <update id="update" parameterType="org.test.entity.Userinfo" >
+        update it_userinfo
+          <set>
+              <if test="create_at != null" >
+                  create_at = #{create_at},
+              </if>
+              <if test="update_at != null" >
+                  update_at = #{update_at},
+              </if>
+              <if test="sex != null" >
+                  sex = #{sex},
+              </if>
+              <if test="age != null" >
+                  age = #{age},
+              </if>
+              <if test="qqNumber != null" >
+                  qqNumber = #{qqNumber},
+              </if>
+              <if test="schoolName != null" >
+                  schoolName = #{schoolName},
+              </if>
+              <if test="signature != null" >
+                  signature = #{signature},
+              </if>
+              <if test="imageUrl != null" >
+                  imageUrl = #{imageUrl},
+              </if>
+              <if test="account != null" >
+                  account = #{account},
+              </if>
+              <if test="password != null" >
+                  password = #{password}
+              </if>
+          </set>
+        where ID = #{ID}
+    </update>
+	<select id="detail" parameterType="int" resultType="org.test.entity.Userinfo">
+		select * from 
+		it_userinfo 
+		where ID = #{ID}
+	</select>
+	<select id="list"  resultMap="Userinfo" >
+		select * from 
+		it_userinfo 
+		limit #{page},#{pageSize}		
+	</select>
+	<select id="listAll"  resultMap="Userinfo" >
+		select * from 
+		it_userinfo 
+				
+	</select>
+	<select id="getCounts" parameterType="org.test.entity.Userinfo"  resultType="int" >
+		select count(*) from 
+		it_userinfo 
+		<where>
+		 	  <if test="create_at != null" >
+                  create_at = #{create_at},
+              </if>
+              <if test="update_at != null" >
+                  update_at = #{update_at}
+              </if>
+              <if test="sex != null" >
+                  sex = #{sex},
+              </if>
+              <if test="age != null" >
+                  age = #{age}
+              </if>
+              <if test="qqNumber != null" >
+                  qqNumber = #{qqNumber},
+              </if>
+              <if test="schoolName != null" >
+                  schoolName = #{schoolName}
+              </if>
+              <if test="signature != null" >
+                  signature = #{signature},
+              </if>
+              <if test="imageUrl != null" >
+                  imageUrl = #{imageUrl}
+              </if>
+              <if test="account != null" >
+                  account = #{account},
+              </if>
+              <if test="password != null" >
+                  password = #{password}
+              </if>
+		</where>
+		
+	</select>
+	
+</mapper>
