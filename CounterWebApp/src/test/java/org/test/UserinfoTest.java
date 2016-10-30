@@ -25,21 +25,21 @@ public class UserinfoTest {
 	
 	@BeforeClass 
     public static void before(){  
-        System.out.println("ËùÓĞ²âÊÔ¿ªÊ¼Ö®Ç°ÔËĞĞµÄÄÚÈİ");  
+        System.out.println("å…ˆå¼€å§‹è¿è¡Œ");  
     }  
   
     @AfterClass  
     public static void after() {  
-        System.out.println("ËùÓĞ²âÊÔÔËĞĞ½áÊøÖ®ºóµÄÄÚÈİ");  
+        System.out.println("æœ€åæ‰§è¡Œ");  
     }  
     @Before  
     public void setUp() throws Exception {  
-        System.out.println("Ò»¸ö²âÊÔ¿ªÊ¼¡£¡£");  
+        System.out.println("åœ¨æ–¹æ³•ä¹‹å‰è¿è¡Œ");  
     }  
   
     @After  
     public void tearDown() throws Exception {  
-        System.out.println("Ò»¸ö²âÊÔ½áÊø");  
+        System.out.println("åœ¨æ–¹æ³•ä¹‹åè¿è¡Œ");  
     }  
 	
 	@Test

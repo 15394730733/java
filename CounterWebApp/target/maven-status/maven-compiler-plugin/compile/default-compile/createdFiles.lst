@@ -1,0 +1,7 @@
+org\test\entity\Userinfo.class
+org\test\mapper\UserinfoMapper.class
+org\test\util\StringUtil.class
+org\test\service\UserinfoService.class
+org\test\action\UserinfoAction.class
+org\test\dao\UserinfoDao.class
+org\test\serviceImpl\UserinfoServiceImpl.class

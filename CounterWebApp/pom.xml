@@ -2,17 +2,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ITXZYT</groupId>
-  <artifactId>ITTast</artifactId>
+  <artifactId>ITTest</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>CounterWebApp Maven Webapp</name>
+  <name>ITTest Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
   <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <spring.version>4.3.0.RELEASE</spring.version>
   </properties>
-
   <dependencies>
       <dependency>
           <groupId>junit</groupId>
@@ -20,6 +19,11 @@
           <version>4.11</version>
           <scope>test</scope>
       </dependency>
+      <dependency>
+    	  <groupId>org.hibernate</groupId>
+    	  <artifactId>hibernate-validator</artifactId>
+          <version>5.2.4.Final</version>
+	  </dependency>
       <dependency>
           <groupId>org.mybatis</groupId>
           <artifactId>mybatis</artifactId>
@@ -79,19 +83,24 @@
             <groupId>org.springframework</groupId>  
             <artifactId>spring-test</artifactId>  
             <version>${spring.version}</version>  
-        </dependency>  	  
-	  <dependency> 
-          <groupId>javax.servlet</groupId> 
-          <artifactId>servlet-api</artifactId> 
-          <version>2.5</version> 
-          <scope>provided</scope> 
-      </dependency>
+        </dependency>  	
+        <dependency>  
+            <groupId>org.mybatis</groupId>  
+            <artifactId>mybatis-spring</artifactId>  
+            <version>1.2.2</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>javax</groupId>  
+            <artifactId>javaee-api</artifactId>  
+            <version>7.0</version>  
+        </dependency>    
+	 
       <dependency>
           <groupId>org.json.taglib</groupId>
           <artifactId>json-taglib</artifactId>
           <version>0.4.1</version>
       </dependency> 
-      <!-- <dependency> 
+      <dependency> 
           <groupId>jstl</groupId> 
           <artifactId>jstl</artifactId> 
           <version>1.2</version> 
@@ -100,17 +109,15 @@
           <groupId>taglibs</groupId> 
           <artifactId>standard</artifactId> 
           <version>1.1.2</version> 
-      </dependency> -->
+      </dependency>
       <dependency>
 	      <groupId>log4j</groupId>
           <artifactId>log4j</artifactId>
           <version>1.2.9</version>
-      </dependency>
-      
-              
+      </dependency>   
 </dependencies>
-  
-  <build>
+ 
+  <build> 
         <finalName>ItTest</finalName>
         <plugins>
             <plugin>
@@ -121,11 +128,20 @@
                     <!-- 在很短的时间间隔内在扫描web应用检查是否有改变，如果发觉有任何改变则自动热部署。默认为0，表示禁用热部署检查。任何一个大于0的数字都将表示启用。 -->
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webAppConfig>
-                        <!--jetty插件启动后的访问路径: http://localhost:8080/ITTest2-->
+                        <!--jetty插件启动后的访问路径: http://localhost:8080/ITTest-->
                         <contextPath>/ITTest</contextPath>                   
                     </webAppConfig>
                 </configuration>
             </plugin>
+            <plugin>  
+        		<groupId>org.apache.maven.plugins</groupId>  
+       			<artifactId>maven-compiler-plugin</artifactId>  
+        		<version>3.0</version>  
+        		<configuration>  
+            		<source>1.7</source>  
+            		<target>1.7</target>  
+        		</configuration>  
+   			 </plugin>  
         </plugins>
-</build>
+	</build>
 </project>

@@ -20,6 +20,8 @@ public class Userinfo {
 	
 	private String name;
 	
+	private String city;
+	
 	private String signature;
 	
 	private String imageUrl;
@@ -124,4 +126,12 @@ public class Userinfo {
 		this.password = password;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
 }

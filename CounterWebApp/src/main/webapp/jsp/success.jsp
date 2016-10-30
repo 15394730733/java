@@ -8,7 +8,7 @@
 <title>成功页</title>
 <script>  
 function jumpurl(){  
-  location='http://localhost:8080/ITTest/jsp/list.jsp';  
+  location='http://localhost:8080/ITTest/user/getlist.html';  
 }  
 setTimeout('jumpurl()',3000);  
 </script>

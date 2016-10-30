@@ -8,11 +8,12 @@
 </head>
 <body>
 
-<form action="<%=request.getContextPath()%>/ITTest/user/insert" method="post">
-昵称：&nbsp&nbsp<input type="text" name="Userinfo.name"/><br/>
+<form action="/ITTest/user/add.html" method="post">
+昵称：&nbsp&nbsp<input type="text" name="name"/><br/>
 账号：&nbsp&nbsp<input type="text" name="account"/><br/>
 密码：&nbsp&nbsp<input type="text" name="password"/><br/>
 年龄：&nbsp&nbsp<input type="text" name="age"/><br/>
+城市：&nbsp&nbsp<input type="text" name="city"/><br/>
 性别：&nbsp&nbsp
 男<input type="radio" name="sex" value="1"/>
 女<input type="radio" name="sex" value="2"/><br/>
